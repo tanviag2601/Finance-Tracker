@@ -1,28 +1,33 @@
-from store import insert_table, create_table, total_amount
-from view import view_table
-import recommend
-import predict
-create_table()
+from store import insert_table,create_table, total_amount
+from view import view_table, graphical_view,monthly_graph
+from search import search_item
 str="Y"
 while str== "Y":
     print("The Menu:")
-    print("1: To store the expenses")
-    print("2: To view the expense table")
-    print("3: To recommend")
-    print("4: To predict the expenses")
-    print("5: To view total expenses")
-    choice=int(input("Enter the choice"))
+    print("1: To store the expenses.")
+    print("2: To view the expense table.")
+    print("3: To view total expenses.")
+    print("4: To view monthly graph.")
+    print("5: To search the item.")
+    choice=int(input("Enter the choice: "))
+    months = ["January","February","March","April","May","June",
+"July","August","September","October","November","December"]
+    if(choice!=5):
+        month_number = int(input("Enter month number (1-12): "))
+        month = months[month_number-1]
+    create_table(month)
     if(choice==1):
-        insert_table()
+        insert_table(month)
     elif(choice==2):
-        view_table()
+        view_table(month)
+        graphical_view(month)
     elif(choice==3):
-        recommend()
+        amt=total_amount(month)
+        print("The total amount spent is: ",amt)
     elif(choice==4):
-        predict()
+        monthly_graph(month_number)
     elif(choice==5):
-        amt=total_amount()
-        print("The total amount spent is: ",amt)    
+        search_item()
     str=input("Do you want to continue the program? ")
 print("The program is terminated")    
     
