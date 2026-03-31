@@ -15,7 +15,7 @@ while str== "Y":
     if(choice!=5):
         month_number = int(input("Enter month number (1-12): "))
         month = months[month_number-1]
-    create_table(month)
+        create_table(month)
     if(choice==1):
         insert_table(month)
     elif(choice==2):
